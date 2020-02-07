@@ -178,6 +178,14 @@ public abstract class Car implements Movable {
         return y;
     }
 
+    public void setX(double x) {
+        this.x = x;
+    }
+
+    public void setY(double y) {
+        this.y = y;
+    }
+
     /**
      * Metod som som kallar incrementSpeed(amount) om amount ligger i [0 1]
      *
@@ -205,6 +213,8 @@ public abstract class Car implements Movable {
             decrementSpeed(1);
         }
     }
+
+
 
 
 }

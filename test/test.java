@@ -1,36 +1,58 @@
 import org.junit.Test;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
 
 public class test {
 
     Car volvo = new Volvo240();
     Car saab = new Saab95();
+    //Car scania = new Scania();
+
+
+  @Test
+    public void garageTest(){
+      Stack<Car> stack = new Stack<Car>();
+      List<Movable> allowed;
+      allowed.add(Volvo240);
+      allowed
+      Garage<Car> = new Garage<>(5, stack, 6, );
+  }
 
 
 
-  /*  @Test
-    public void volvoMove() {
-        System.out.println(volvo.getX());
-        System.out.println(volvo.getY());
-        volvo.gas(0.5);                 //anropar incrementSpeed som sätter getCurrentSpeed() + speedFactor() * amount
-        volvo.move();                        // med speedFactor getEnginePower() * 0.01 * trimFactor
-        System.out.println(volvo.getX());        // vilket ger 0 + (100 * 0.01 * 1.25) * 0.5 = 0.625
-        System.out.println(volvo.getY());        // ----> gas, incrementSpeed och gas ser ut att fungera
+    @Test
+    public void scaniaTest(){
+       Scania scania = new Scania();
+        System.out.println(scania.getAngle());
+        System.out.println("x= " + scania.getX() + "  y= " + scania.getY());
+        scania.gas(1);
+        scania.move();
+        System.out.println("x= " + scania.getX() + "  y= " + scania.getY());
+        scania.raiseTruckBed();
+        scania.raiseTruckBed();
+        scania.raiseTruckBed();
+        scania.raiseTruckBed();
+        System.out.println(scania.getAngle());
 
-    }*/
+        scania.move();
+        System.out.println("x= " + scania.getX() + "  y= " + scania.getY());
+        scania.gas(1);
+        scania.gas(1);
+        scania.gas(1);
+        scania.move();
+        System.out.println("x= " + scania.getX() + "  y= " + scania.getY());
 
-    /*@Test
-    public void saabMove() {
-        System.out.println("saab " + saab.getX());
-        System.out.println(saab.getY());
-        //System.out.println(saab.);
-        saab.gas(0.5);                 //anropar incrementSpeed som sätter getCurrentSpeed() + speedFactor() * amount
-        saab.move();                        // med speedFactor getEnginePower() * 0.01 * Turbo
-        System.out.println(saab.getX());        // vilket ger 0 + (125 * 0.01 * 1.00) * 0.5 = 0.625
-        System.out.println(saab.getY());        // ----> gas, incrementSpeed och gas ser ut att fungera
+        scania.lowerTruckBed();
+        scania.lowerTruckBed();
+        scania.lowerTruckBed();
+        scania.lowerTruckBed();
+        scania.move();
+        System.out.println("x= " + scania.getX() + "  y= " + scania.getY());
+    }
 
-    }*/
 
     /**
      * Testar svänga vänster

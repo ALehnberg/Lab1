@@ -26,7 +26,7 @@ public class CarTransport extends Car {
 
     public void boolean (Car car) {
         return (Math.abs(car.getX()-this.getX() < pickRange)
-                && car.getY()-this.getY() < pickRange && !rampUp)
+                && Math.abs(car.getY()-this.getY() < pickRange && !rampUp));
     }
 
 

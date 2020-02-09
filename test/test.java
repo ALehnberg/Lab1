@@ -2,23 +2,40 @@ import org.junit.Test;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
 public class test {
 
-    Car volvo = new Volvo240();
-    Car saab = new Saab95();
+    //Car volvo = new Volvo240();
+    //Car saab = new Saab95();
     //Car scania = new Scania();
 
 
   @Test
     public void garageTest(){
-      Stack<Car> stack = new Stack<Car>();
-      List<Movable> allowed;
-      allowed.add(Volvo240);
-      allowed
-      Garage<Car> = new Garage<>(5, stack, 6, );
+      Volvo240 volvo = new Volvo240();
+      Saab95 saab = new Saab95();
+                                                // Car car = new Car(2,200,Color.RED,"CAR");
+      Stack<Car> stack = new Stack<>();
+      List<Class<? extends Car>> allowed = new ArrayList<>();
+      //allowed.add(car);
+
+      allowed.add(Volvo240.class);
+      allowed.add(Car.class);
+      allowed.add(Saab95.class);
+
+      Garage<Car> G = new Garage<>(5, stack, 6, allowed);
+      System.out.println(G.getCapacity());
+      System.out.println(volvo.getClass());
+      System.out.println(G.getCars());
+      G.push(volvo);
+      System.out.println(G.getCars());                      // Kan ta in accepterade typer
+      G.push(saab);
+      System.out.println(G.getCars());                      // Tar inte in fel typer
+
+
   }
 
 
@@ -91,7 +108,7 @@ public class test {
         System.out.println((Math.abs(v1.getX())<0.0001)&& (Math.abs(v1.getY())<0.0001 ));
     }
 
-
+/*
     @Test
     public void testGasNBrake() {
         Saab95 s1 = new Saab95();
@@ -109,6 +126,8 @@ public class test {
         s2.gas(1);
         System.out.println(s1.getCurrentSpeed()==s2.getCurrentSpeed());
     }
+
+ */
 
     @Test
     public void testSaabMaxMinSpeed() {

@@ -7,9 +7,9 @@ public class Garage <E extends Car> {
     private int nCars;
     private Stack<E> storage;
     private int Capacity;
-    private List<E> allowedTypes;
+    private List<Class<? extends Car>> allowedTypes;
 
-    public Garage(int nCars, Stack<E> storage, int Capacity,List<E> allowedTypes) {
+    public Garage(int nCars, Stack<E> storage, int Capacity,List<Class<? extends Car>> allowedTypes) {
         this.nCars = nCars;
         this.storage = storage;
         this.Capacity=Capacity;
@@ -29,6 +29,8 @@ public class Garage <E extends Car> {
     public void push(E car){
         if (storage.size() < Capacity && allowedTypes.contains(car.getClass())){
             storage.push(car);
+        } else {
+            System.out.println("Wrong type of Car");
         }
     }
 

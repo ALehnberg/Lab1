@@ -1,85 +1,76 @@
 import org.junit.Test;
+
 import java.awt.*;
 import java.util.ArrayList;
-
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
 public class test {
 
-
-
     //Car volvo = new Volvo240();
     //Car saab = new Saab95();
     //Car scania = new Scania();
 
 
-    /*
+//GAY
+
     @Test
-    public void garageTest(){
-        Volvo240 volvo = new Volvo240();
-        Saab95 saab = new Saab95();
-        // Car car = new Car(2,200,Color.RED,"CAR");
-        Stack<Car> stack = new Stack<>();
-        List<Class<? extends Car>>
-                allowed = new ArrayList<>();
-        //allowed.add(car);
-
-        allowed.add(Volvo240.class);
-        allowed.add(Car.class);
-        allowed.add(Saab95.class);
-
-        Garage<Car> G = new Garage<>(5, stack, 6, allowed);
-        System.out.println(G.getCapacity());
-        System.out.println(volvo.getClass());
-        System.out.println(G.getCars());
-        G.push(volvo);
-        System.out.println(G.getCars());                      // Kan ta in accepterade typer
-        G.push(saab);
-        System.out.println(G.getCars());                      // Tar inte in fel typer
-
-
-
-
+    public void testRamp(){
+        CarTransport C = new CarTransport();
+        System.out.println(!C.getRampUpp());
+        C.setRampUpp();
+        System.out.println(C.getRampUpp());
     }
-    /*
-     */
 
 
     @Test
-    public void scaniaTest(){
-        Scania scania = new Scania();
-        System.out.println(scania.getAngle());
-        System.out.println("x= " + scania.getX() + "  y= " + scania.getY());
-        scania.gas(1);
-        scania.move();
-        System.out.println("x= " + scania.getX() + "  y= " + scania.getY());
-        scania.raiseTruckBed();
-        scania.raiseTruckBed();
-        scania.raiseTruckBed();
-        scania.raiseTruckBed();
-        System.out.println(scania.getAngle());
+    public void testAddCar(){
+        CarTransport C = new CarTransport();        // Kollar att vi kan lägga till bilar om ramp nere
+        Volvo240 v = new Volvo240();
 
-        scania.move();
-        System.out.println("x= " + scania.getX() + "  y= " + scania.getY());
-        scania.gas(1);
-        scania.gas(1);
-        scania.gas(1);
-        scania.move();
-        System.out.println("x= " + scania.getX() + "  y= " + scania.getY());
+        C.addCar(v);
+        Stack e = C.getCarStack();
+        System.out.println(e.contains(v));
 
-        scania.lowerTruckBed();
-        scania.lowerTruckBed();
-        scania.lowerTruckBed();
-        scania.lowerTruckBed();
-        scania.move();
-        System.out.println("x= " + scania.getX() + "  y= " + scania.getY());
+        C.removeCar();
+
+        C.setRampUpp();
+
+        C.addCar(v);
+
+        System.out.println(!e.contains(v));
     }
 
-=
+    @Test
+    public void testMove(){
+        CarTransport C = new CarTransport();
+        Volvo240 v = new Volvo240();
+
+        double x1 = C.getX();
+        double x2 = v.getX();
+
+        C.addCar(v);
+        C.setRampUpp();
+        C.gas(1);
+        C.move();
+
+        System.out.println(x1!=C.getX());   // har carTrans flyttat?
+        System.out.println(x2!=v.getX());   // har volvo flyttat?
+        System.out.println(C.getX() == v.getX());   // har de samma cords efter flytt?
+    }
+
+
+
+
+
+
+
+
+
+
   @Test
-    public void garageTest(){
+    public void verkstadTest(){
       Volvo240 volvo = new Volvo240();
       Saab95 saab = new Saab95();
       Volvo240 volvo2 = new Volvo240();
@@ -91,31 +82,32 @@ public class test {
       //allowed.add(Saab95.class);
 
       // Vi kan ändra typ-parametern till Car för att få ett mer dynamiskt garage!
-      Verkstad<Volvo240> G = new Verkstad<Volvo240>(5, 6, allowed);
-      System.out.println(G.getCapacity());
-      System.out.println(volvo.getClass());
-      System.out.println(G.getCars());
+      Verkstad<Volvo240> G = new Verkstad<Volvo240>(6, allowed);
+
+
       G.push(volvo);
-      G.push(volvo2);
-      System.out.println("Antal bilar i stacken  " + G.getCars());                      // Kan ta in accepterade typer
-      //G.push(saab);
-      System.out.println("Antal bilar i stacken  " + G.getCars());                      // Tar inte in fel typer
+      G.push(volvo2);   //lägger två bilar i Verkstaden
+
+      //System.out.println("Antal bilar i stacken  " + G.getCars());                      // Kan ta in accepterade typer
+
+      G.push(saab); //Försöker lägga in SAAB, ej kompileringsfel då vi gjort Verkstad dynamisk, dvs en verkstad kan vid senare
+                    // tillfällde ändra vilka bilar de kan reparera.
 
 
-      Volvo240 v = G.pop();
-      System.out.println(v);
-      System.out.println(v==volvo);
+      //System.out.println("Antal bilar i stacken  " + G.getCars());                      // Tar inte in fel typer
 
 
+      Car v2 = G.pop();
+      Car v1 = G.pop();
+
+
+      //System.out.println(v);
+      System.out.println(v2==volvo2);
+      System.out.println(v1==volvo); //Poppar bilarna i omvänd ordning
   }
 
 
-    @Test
-    public void VerkPopTest(){
 
-    }
-
-    /*
     @Test
     public void scaniaTest(){
        Scania scania = new Scania();
@@ -145,9 +137,6 @@ public class test {
         scania.move();
         System.out.println("x= " + scania.getX() + "  y= " + scania.getY());
     }
-
-     */
-
 
 
     /**
@@ -205,9 +194,8 @@ public class test {
         s2.gas(1);
         System.out.println(s1.getCurrentSpeed()==s2.getCurrentSpeed());
     }
+
  */
-
-
 
     @Test
     public void testSaabMaxMinSpeed() {
@@ -238,11 +226,14 @@ public class test {
 
   /*  @Test
     public void gettersNSetters() {
+
+
         System.out.println(saab.getEnginePower());
         System.out.println(saab.getCurrentSpeed());
         System.out.println(saab.getColor().toString());
         System.out.println();
         System.out.println();
+
     }*/
 
 
@@ -275,7 +266,5 @@ public class test {
         Car p = new Car(1,2, Color.black,"prutt");
     }
     */
-
-
 
 }

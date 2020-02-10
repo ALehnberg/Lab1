@@ -1,14 +1,19 @@
 import org.junit.Test;
 import java.awt.*;
 import java.util.ArrayList;
+
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Stack;
 
 public class test {
 
 
+
     //Car volvo = new Volvo240();
     //Car saab = new Saab95();
     //Car scania = new Scania();
+
 
     /*
     @Test
@@ -72,6 +77,78 @@ public class test {
         System.out.println("x= " + scania.getX() + "  y= " + scania.getY());
     }
 
+=
+  @Test
+    public void garageTest(){
+      Volvo240 volvo = new Volvo240();
+      Saab95 saab = new Saab95();
+      Volvo240 volvo2 = new Volvo240();
+
+      List<Class<? extends Car>> allowed = new ArrayList<>();
+      //allowed.add(car);
+
+      allowed.add(Volvo240.class);
+      //allowed.add(Saab95.class);
+
+      // Vi kan ändra typ-parametern till Car för att få ett mer dynamiskt garage!
+      Verkstad<Volvo240> G = new Verkstad<Volvo240>(5, 6, allowed);
+      System.out.println(G.getCapacity());
+      System.out.println(volvo.getClass());
+      System.out.println(G.getCars());
+      G.push(volvo);
+      G.push(volvo2);
+      System.out.println("Antal bilar i stacken  " + G.getCars());                      // Kan ta in accepterade typer
+      //G.push(saab);
+      System.out.println("Antal bilar i stacken  " + G.getCars());                      // Tar inte in fel typer
+
+
+      Volvo240 v = G.pop();
+      System.out.println(v);
+      System.out.println(v==volvo);
+
+
+  }
+
+
+    @Test
+    public void VerkPopTest(){
+
+    }
+
+    /*
+    @Test
+    public void scaniaTest(){
+       Scania scania = new Scania();
+        System.out.println(scania.getAngle());
+        System.out.println("x= " + scania.getX() + "  y= " + scania.getY());
+        scania.gas(1);
+        scania.move();
+        System.out.println("x= " + scania.getX() + "  y= " + scania.getY());
+        scania.raiseTruckBed();
+        scania.raiseTruckBed();
+        scania.raiseTruckBed();
+        scania.raiseTruckBed();
+        System.out.println(scania.getAngle());
+
+        scania.move();
+        System.out.println("x= " + scania.getX() + "  y= " + scania.getY());
+        scania.gas(1);
+        scania.gas(1);
+        scania.gas(1);
+        scania.move();
+        System.out.println("x= " + scania.getX() + "  y= " + scania.getY());
+
+        scania.lowerTruckBed();
+        scania.lowerTruckBed();
+        scania.lowerTruckBed();
+        scania.lowerTruckBed();
+        scania.move();
+        System.out.println("x= " + scania.getX() + "  y= " + scania.getY());
+    }
+
+     */
+
+
 
     /**
      * Testar svänga vänster
@@ -129,6 +206,8 @@ public class test {
         System.out.println(s1.getCurrentSpeed()==s2.getCurrentSpeed());
     }
  */
+
+
 
     @Test
     public void testSaabMaxMinSpeed() {

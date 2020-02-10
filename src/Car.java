@@ -142,9 +142,7 @@ public abstract class Car implements Movable {
      *
      * @return
      */
-    public double speedFactor() {
-        return getEnginePower() * 0.01;
-    }
+    public abstract double speedFactor();
 
     /**
      * Metod som ökar currentSpeed

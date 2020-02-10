@@ -75,9 +75,8 @@ public class CarTransport extends Car {
 
 
 
-
-
-
-
-
+    @Override
+    public double speedFactor() {
+        return 0;
+    }
 }

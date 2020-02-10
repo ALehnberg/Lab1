@@ -1,36 +1,77 @@
 import org.junit.Test;
-
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Stack;
 
 public class test {
 
-    Car volvo = new Volvo240();
-    Car saab = new Saab95();
+
+    //Car volvo = new Volvo240();
+    //Car saab = new Saab95();
+    //Car scania = new Scania();
+
+    /*
+    @Test
+    public void garageTest(){
+        Volvo240 volvo = new Volvo240();
+        Saab95 saab = new Saab95();
+        // Car car = new Car(2,200,Color.RED,"CAR");
+        Stack<Car> stack = new Stack<>();
+        List<Class<? extends Car>>
+                allowed = new ArrayList<>();
+        //allowed.add(car);
+
+        allowed.add(Volvo240.class);
+        allowed.add(Car.class);
+        allowed.add(Saab95.class);
+
+        Garage<Car> G = new Garage<>(5, stack, 6, allowed);
+        System.out.println(G.getCapacity());
+        System.out.println(volvo.getClass());
+        System.out.println(G.getCars());
+        G.push(volvo);
+        System.out.println(G.getCars());                      // Kan ta in accepterade typer
+        G.push(saab);
+        System.out.println(G.getCars());                      // Tar inte in fel typer
 
 
 
-  /*  @Test
-    public void volvoMove() {
-        System.out.println(volvo.getX());
-        System.out.println(volvo.getY());
-        volvo.gas(0.5);                 //anropar incrementSpeed som sätter getCurrentSpeed() + speedFactor() * amount
-        volvo.move();                        // med speedFactor getEnginePower() * 0.01 * trimFactor
-        System.out.println(volvo.getX());        // vilket ger 0 + (100 * 0.01 * 1.25) * 0.5 = 0.625
-        System.out.println(volvo.getY());        // ----> gas, incrementSpeed och gas ser ut att fungera
 
-    }*/
+    }
+    /*
+     */
 
-    /*@Test
-    public void saabMove() {
-        System.out.println("saab " + saab.getX());
-        System.out.println(saab.getY());
-        //System.out.println(saab.);
-        saab.gas(0.5);                 //anropar incrementSpeed som sätter getCurrentSpeed() + speedFactor() * amount
-        saab.move();                        // med speedFactor getEnginePower() * 0.01 * Turbo
-        System.out.println(saab.getX());        // vilket ger 0 + (125 * 0.01 * 1.00) * 0.5 = 0.625
-        System.out.println(saab.getY());        // ----> gas, incrementSpeed och gas ser ut att fungera
 
-    }*/
+    @Test
+    public void scaniaTest(){
+        Scania scania = new Scania();
+        System.out.println(scania.getAngle());
+        System.out.println("x= " + scania.getX() + "  y= " + scania.getY());
+        scania.gas(1);
+        scania.move();
+        System.out.println("x= " + scania.getX() + "  y= " + scania.getY());
+        scania.raiseTruckBed();
+        scania.raiseTruckBed();
+        scania.raiseTruckBed();
+        scania.raiseTruckBed();
+        System.out.println(scania.getAngle());
+
+        scania.move();
+        System.out.println("x= " + scania.getX() + "  y= " + scania.getY());
+        scania.gas(1);
+        scania.gas(1);
+        scania.gas(1);
+        scania.move();
+        System.out.println("x= " + scania.getX() + "  y= " + scania.getY());
+
+        scania.lowerTruckBed();
+        scania.lowerTruckBed();
+        scania.lowerTruckBed();
+        scania.lowerTruckBed();
+        scania.move();
+        System.out.println("x= " + scania.getX() + "  y= " + scania.getY());
+    }
+
 
     /**
      * Testar svänga vänster
@@ -69,7 +110,7 @@ public class test {
         System.out.println((Math.abs(v1.getX())<0.0001)&& (Math.abs(v1.getY())<0.0001 ));
     }
 
-
+/*
     @Test
     public void testGasNBrake() {
         Saab95 s1 = new Saab95();
@@ -87,6 +128,7 @@ public class test {
         s2.gas(1);
         System.out.println(s1.getCurrentSpeed()==s2.getCurrentSpeed());
     }
+ */
 
     @Test
     public void testSaabMaxMinSpeed() {
@@ -117,14 +159,11 @@ public class test {
 
   /*  @Test
     public void gettersNSetters() {
-
-
         System.out.println(saab.getEnginePower());
         System.out.println(saab.getCurrentSpeed());
         System.out.println(saab.getColor().toString());
         System.out.println();
         System.out.println();
-
     }*/
 
 
@@ -157,6 +196,7 @@ public class test {
         Car p = new Car(1,2, Color.black,"prutt");
     }
     */
+
 
 
 }

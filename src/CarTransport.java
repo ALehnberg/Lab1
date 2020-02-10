@@ -29,9 +29,8 @@ public Car removeCar() {
 }
 
 
-
-
-
-
-
+    @Override
+    public double speedFactor() {
+        return 0;
+    }
 }

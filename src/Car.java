@@ -4,7 +4,7 @@ import java.awt.*;
 /**
  * Abstrakt klass Car, extendas till Volvo och Saab
  */
-public class Car implements Movable {
+public abstract class Car implements Movable {
 
     /**
      * Allt en bil är

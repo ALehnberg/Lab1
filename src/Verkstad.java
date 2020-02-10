@@ -2,18 +2,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-public class Garage <E extends Car> {
+public class Verkstad <E extends Car> {
 
     private int nCars;
     private Stack<E> storage;
     private int Capacity;
     private List<Class<? extends Car>> allowedTypes;
 
-    public Garage(int nCars, Stack<E> storage, int Capacity,List<Class<? extends Car>> allowedTypes) {
+
+
+    public Verkstad(int nCars, int Capacity,List<Class<? extends Car>> allowedTypes) {
         this.nCars = nCars;
-        this.storage = storage;
         this.Capacity=Capacity;
         this.allowedTypes=allowedTypes;
+        this.storage = new Stack<E>();
     }
 
 
@@ -35,6 +37,9 @@ public class Garage <E extends Car> {
     }
 
 
+    public E pop(){
+        return storage.pop();
+    }
 
 }
 

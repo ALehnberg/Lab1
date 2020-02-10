@@ -33,4 +33,9 @@ public class Scania extends Car implements Movable {
             super.move();
         }
     }
+
+    @Override
+    public double speedFactor() {
+        return 0;
+    }
 }

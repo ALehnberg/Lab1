@@ -53,6 +53,9 @@ public class CarTransport extends Car {
         }
     }
 
+    public void moveRemovedCars() {
+        
+
 
 
 

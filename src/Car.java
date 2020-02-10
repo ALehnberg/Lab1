@@ -4,7 +4,7 @@ import java.awt.*;
 /**
  * Abstrakt klass Car, extendas till Volvo och Saab
  */
-public abstract class Car implements Movable {
+public class Car implements Movable {
 
     /**
      * Allt en bil är
@@ -176,6 +176,14 @@ public abstract class Car implements Movable {
         return y;
     }
 
+    public void setX(double x) {
+        this.x = x;
+    }
+
+    public void setY(double y) {
+        this.y = y;
+    }
+
     /**
      * Metod som som kallar incrementSpeed(amount) om amount ligger i [0 1]
      *
@@ -203,6 +211,8 @@ public abstract class Car implements Movable {
             decrementSpeed(1);
         }
     }
+
+
 
 
 }

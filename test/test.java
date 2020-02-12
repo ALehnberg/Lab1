@@ -90,7 +90,7 @@ public class test {
 
       //System.out.println("Antal bilar i stacken  " + G.getCars());                      // Kan ta in accepterade typer
 
-      G.push(saab); //Försöker lägga in SAAB, ej kompileringsfel då vi gjort Verkstad dynamisk, dvs en verkstad kan vid senare
+      //G.push(saab); //Försöker lägga in SAAB, ej kompileringsfel då vi gjort Verkstad dynamisk, dvs en verkstad kan vid senare
                     // tillfällde ändra vilka bilar de kan reparera.
 
 

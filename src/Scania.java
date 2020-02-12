@@ -24,11 +24,11 @@ public class Scania extends Car implements Movable {
     public void lowerTruckBed() {
         if (angle >= 0 && getCurrentSpeed() == 0) {
             angle -= 1;
-        }
+        }//throw exception
     }
 
     public double getAngle() {
-        return this.angle = angle;
+        return this.angle;
     }
 
     /**

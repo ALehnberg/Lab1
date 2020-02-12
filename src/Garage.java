@@ -11,6 +11,7 @@ import java.util.Stack;
 
 //Wildcard ? = typ-argument som representerar en okänd typ. Vi kommer aldrig veta mer om denna typ än de bounds
 //upper/lower som är givna.
+
 public class Garage <E extends Car> {
 
     private int nCars;
@@ -18,10 +19,10 @@ public class Garage <E extends Car> {
     private int Capacity;
     private List<Class<? extends Car>> allowedTypes;
 
-    public Garage (int nCars, int Capacity,List<Class<? extends Car>> allowedTypes) {
+    public Garage(int nCars, int Capacity, List<Class<? extends Car>> allowedTypes) {
         this.nCars = nCars;
-        this.Capacity=Capacity;
-        this.allowedTypes=allowedTypes;
+        this.Capacity = Capacity;
+        this.allowedTypes = allowedTypes;
         this.storage = new Stack<E>();
     }
 
@@ -29,12 +30,12 @@ public class Garage <E extends Car> {
         return storage.size();
     }
 
-    public int getCapacity(){
+    public int getCapacity() {
         return Capacity;
     }
 
-    public void push(E car){
-        if (storage.size() < Capacity && allowedTypes.contains(car.getClass())){
+    public void push(E car) {
+        if (storage.size() < Capacity && allowedTypes.contains(car.getClass())) {
             storage.push(car);
         } else {
             System.out.println("Wrong type of Car");
@@ -44,3 +45,5 @@ public class Garage <E extends Car> {
     public E pop() {
         return storage.pop();
     }
+
+}

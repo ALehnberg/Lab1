@@ -33,6 +33,10 @@ public abstract class Car implements Movable {
         this.nrDoors = nrDoors;
     }
 
+    public void hej() {
+
+    }
+
 
     /**
      * Metod move som ändrar x- och y-position beroende på currentdir

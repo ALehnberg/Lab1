@@ -17,7 +17,7 @@ public class test {
 //GAY
 
     @Test
-    public void testRamp(){
+    public void testRamp() {
         CarTransport C = new CarTransport();
         System.out.println(!C.getRampUpp());
         C.setRampUpp();
@@ -26,7 +26,7 @@ public class test {
 
 
     @Test
-    public void testAddCar(){
+    public void testAddCar() {
         CarTransport C = new CarTransport();        // Kollar att vi kan lägga till bilar om ramp nere
         Volvo240 v = new Volvo240();
 
@@ -44,21 +44,7 @@ public class test {
     }
 
     @Test
-
-    public void scaniaTest() {
-        Scania scania = new Scania();
-        System.out.println(scania.getAngle());
-        System.out.println("x= " + scania.getX() + "  y= " + scania.getY());
-        scania.gas(1);
-        scania.move();
-        System.out.println("x= " + scania.getX() + "  y= " + scania.getY());
-        scania.raiseTruckBed();
-        scania.raiseTruckBed();
-        scania.raiseTruckBed();
-        scania.raiseTruckBed();
-        System.out.println(scania.getAngle());
-
-    public void testMove(){
+    public void testMove() {
         CarTransport C = new CarTransport();
         Volvo240 v = new Volvo240();
 
@@ -71,18 +57,18 @@ public class test {
         C.gas(1);
         C.move();
 
-        System.out.println(x1!=C.getX());   // har carTrans flyttat?
-        System.out.println(x2!=v.getX());   // har volvo flyttat?
+        System.out.println(x1 != C.getX());   // har carTrans flyttat?
+        System.out.println(x2 != v.getX());   // har volvo flyttat?
         System.out.println(C.getX() == v.getX());   // har de samma cords efter flytt?
     }
 
 
-
-  @Test
-    public void verkstadTest(){
-      Volvo240 volvo = new Volvo240();
-      Saab95 saab = new Saab95();
-      Volvo240 volvo2 = new Volvo240();
+    @Test
+    public void verkstadTest() {
+        Volvo240 volvo = new Volvo240();
+        Saab95 saab = new Saab95();
+        Volvo240 volvo2 = new Volvo240();
+    }
 
 
     @Test
@@ -98,7 +84,7 @@ public class test {
         //allowed.add(Saab95.class);
 
         // Vi kan ändra typ-parametern till Car för att få ett mer dynamiskt garage!
-        Verkstad<Volvo240> G = new Verkstad<Volvo240>(5, 6, allowed);
+        Verkstad<Volvo240> G = new Verkstad<Volvo240>(5, allowed);
         System.out.println(G.getCapacity());
         System.out.println(volvo.getClass());
         System.out.println(G.getCars());
@@ -108,15 +94,6 @@ public class test {
         //G.push(saab);
         System.out.println("Antal bilar i stacken  " + G.getCars());                      // Tar inte in fel typer
 
-      // Vi kan ändra typ-parametern till Car för att få ett mer dynamiskt garage!
-      Verkstad<Volvo240> G = new Verkstad<Volvo240>(6, allowed);
-
-
-      G.push(volvo);
-      G.push(volvo2);   //lägger två bilar i Verkstaden
-
-
-      //System.out.println("Antal bilar i stacken  " + G.getCars());                      // Kan ta in accepterade typer
 
         Volvo240 v = G.pop();
         System.out.println(v);
@@ -127,30 +104,8 @@ public class test {
 
 
     @Test
-    public void VerkPopTest() {
-
-      //G.push(saab); //Försöker lägga in SAAB, ej kompileringsfel då vi gjort Verkstad dynamisk, dvs en verkstad kan vid senare
-                    // tillfällde ändra vilka bilar de kan reparera.
-
-
-      //System.out.println("Antal bilar i stacken  " + G.getCars());                      // Tar inte in fel typer
-
-
-      Car v2 = G.pop();
-      Car v1 = G.pop();
-
-
-      //System.out.println(v);
-      System.out.println(v2==volvo2);
-      System.out.println(v1==volvo); //Poppar bilarna i omvänd ordning
-  }
-
-
-
-
-    @Test
-    public void scaniaTest(){
-       Scania scania = new Scania();
+    public void scaniaTest() {
+        Scania scania = new Scania();
         System.out.println(scania.getAngle());
         System.out.println("x= " + scania.getX() + "  y= " + scania.getY());
         scania.gas(1);
@@ -307,3 +262,4 @@ public class test {
     }
     */
 
+}

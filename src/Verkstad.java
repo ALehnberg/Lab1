@@ -17,7 +17,7 @@ public class Verkstad <E extends Car> {
         this.storage = new Stack<E>();
     }
 
-    public int getStorageSize() {
+    public int getCars() {
         return storage.size();
     }
 

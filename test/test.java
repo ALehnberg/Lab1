@@ -8,6 +8,7 @@ import java.util.Stack;
 
 public class test {
 
+
     //Car volvo = new Volvo240();
     //Car saab = new Saab95();
     //Car scania = new Scania();
@@ -43,9 +44,24 @@ public class test {
     }
 
     @Test
+
+    public void scaniaTest() {
+        Scania scania = new Scania();
+        System.out.println(scania.getAngle());
+        System.out.println("x= " + scania.getX() + "  y= " + scania.getY());
+        scania.gas(1);
+        scania.move();
+        System.out.println("x= " + scania.getX() + "  y= " + scania.getY());
+        scania.raiseTruckBed();
+        scania.raiseTruckBed();
+        scania.raiseTruckBed();
+        scania.raiseTruckBed();
+        System.out.println(scania.getAngle());
+
     public void testMove(){
         CarTransport C = new CarTransport();
         Volvo240 v = new Volvo240();
+
 
         double x1 = C.getX();
         double x2 = v.getX();
@@ -62,24 +78,35 @@ public class test {
 
 
 
-
-
-
-
-
-
-
   @Test
     public void verkstadTest(){
       Volvo240 volvo = new Volvo240();
       Saab95 saab = new Saab95();
       Volvo240 volvo2 = new Volvo240();
 
-      List<Class<? extends Car>> allowed = new ArrayList<>();
-      //allowed.add(car);
 
-      allowed.add(Volvo240.class);
-      //allowed.add(Saab95.class);
+    @Test
+    public void garageTest() {
+        Volvo240 volvo = new Volvo240();
+        Saab95 saab = new Saab95();
+        Volvo240 volvo2 = new Volvo240();
+
+        List<Class<? extends Car>> allowed = new ArrayList<>();
+        //allowed.add(car);
+
+        allowed.add(Volvo240.class);
+        //allowed.add(Saab95.class);
+
+        // Vi kan ändra typ-parametern till Car för att få ett mer dynamiskt garage!
+        Verkstad<Volvo240> G = new Verkstad<Volvo240>(5, 6, allowed);
+        System.out.println(G.getCapacity());
+        System.out.println(volvo.getClass());
+        System.out.println(G.getCars());
+        G.push(volvo);
+        G.push(volvo2);
+        System.out.println("Antal bilar i stacken  " + G.getCars());                      // Kan ta in accepterade typer
+        //G.push(saab);
+        System.out.println("Antal bilar i stacken  " + G.getCars());                      // Tar inte in fel typer
 
       // Vi kan ändra typ-parametern till Car för att få ett mer dynamiskt garage!
       Verkstad<Volvo240> G = new Verkstad<Volvo240>(6, allowed);
@@ -88,7 +115,19 @@ public class test {
       G.push(volvo);
       G.push(volvo2);   //lägger två bilar i Verkstaden
 
+
       //System.out.println("Antal bilar i stacken  " + G.getCars());                      // Kan ta in accepterade typer
+
+        Volvo240 v = G.pop();
+        System.out.println(v);
+        System.out.println(v == volvo);
+
+
+    }
+
+
+    @Test
+    public void VerkPopTest() {
 
       //G.push(saab); //Försöker lägga in SAAB, ej kompileringsfel då vi gjort Verkstad dynamisk, dvs en verkstad kan vid senare
                     // tillfällde ändra vilka bilar de kan reparera.
@@ -105,6 +144,7 @@ public class test {
       System.out.println(v2==volvo2);
       System.out.println(v1==volvo); //Poppar bilarna i omvänd ordning
   }
+
 
 
 
@@ -149,14 +189,14 @@ public class test {
         v1.startEngine();
         v1.incrementSpeed(10);
 
-        for(int i = 0;i<4; i++){    //sväng 4 ggr
+        for (int i = 0; i < 4; i++) {    //sväng 4 ggr
 
             v1.turnLeft();
             v1.move();
 
         }
 
-        System.out.println((Math.abs(v1.getX())<0.0001)&& (Math.abs(v1.getY())<0.0001 ));
+        System.out.println((Math.abs(v1.getX()) < 0.0001) && (Math.abs(v1.getY()) < 0.0001));
     }
 
     /**
@@ -168,12 +208,12 @@ public class test {
         v1.startEngine();
         v1.gas(0.5);
 
-        for(int i = 0;i<4; i++){    //sväng 4 ggr
+        for (int i = 0; i < 4; i++) {    //sväng 4 ggr
             v1.turnLeft();
             v1.move();
         }
         // Efter 4 varv bör vi vara tillbaka till (0,0)
-        System.out.println((Math.abs(v1.getX())<0.0001)&& (Math.abs(v1.getY())<0.0001 ));
+        System.out.println((Math.abs(v1.getX()) < 0.0001) && (Math.abs(v1.getY()) < 0.0001));
     }
 
 /*
@@ -196,6 +236,7 @@ public class test {
     }
 
  */
+
 
     @Test
     public void testSaabMaxMinSpeed() {
@@ -237,7 +278,6 @@ public class test {
     }*/
 
 
-
     @Test
     public void testTurbo() {
         Saab95 s1 = new Saab95();
@@ -248,7 +288,7 @@ public class test {
         s1.gas(1);
         s2.gas(1);
 
-        System.out.println(s1.getCurrentSpeed() > s2.getCurrentSpeed()  );
+        System.out.println(s1.getCurrentSpeed() > s2.getCurrentSpeed());
 
         s1.setTurboOff();
         s1.stopEngine();
@@ -257,7 +297,7 @@ public class test {
         s1.gas(1);
         s2.gas(1);
 
-        System.out.println(s1.getCurrentSpeed() == s2.getCurrentSpeed() );
+        System.out.println(s1.getCurrentSpeed() == s2.getCurrentSpeed());
     }
 
 /*  //fungerar inte om Car är abstract
@@ -267,4 +307,3 @@ public class test {
     }
     */
 
-}

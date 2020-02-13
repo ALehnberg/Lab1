@@ -98,8 +98,6 @@ public class test {
         Volvo240 v = G.pop();
         System.out.println(v);
         System.out.println(v == volvo);
-
-
     }
 
 

@@ -14,23 +14,27 @@ public class Scania extends Car implements Movable {
     public void raiseTruckBed() {
         if ((angle < 70)&& (getCurrentSpeed()==0)) {
             angle += 1;
-        }
+        } // Throw error / print
     }
 
     public void lowerTruckBed() {
         if ((angle > 0) && (getCurrentSpeed()==0)) {
             angle -= 1;
-        }
-
+        } // Throw error
     }
 
     public double getAngle() {
-        return this.angle = angle;
+        return this.angle;
     }
 
     public void move() {
         if(angle == 0) {
             super.move();
-        }
+        } // Else kan man throwa "RAMP UPP"-error
     }
+
+    @Override
+    public double speedFactor() {
+        return getEnginePower() * 0.01 ;
+    }   // inet speciellt som påverkar speedfactor.
 }

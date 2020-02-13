@@ -2,20 +2,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-public class Garage <E extends Car> {
+public class Verkstad <E extends Car> {
 
-    private int nCars;
+
     private Stack<E> storage;
     private int Capacity;
     private List<Class<? extends Car>> allowedTypes;
 
-    public Garage(int nCars, Stack<E> storage, int Capacity,List<Class<? extends Car>> allowedTypes) {
-        this.nCars = nCars;
-        this.storage = storage;
+
+
+    public Verkstad( int Capacity, List<Class<? extends Car>> allowedTypes) {
         this.Capacity=Capacity;
         this.allowedTypes=allowedTypes;
+        this.storage = new Stack<E>();
     }
-
 
     public int getCars() {
         return storage.size();
@@ -26,15 +26,19 @@ public class Garage <E extends Car> {
     }
 
 
-    public void push(E car){
+    public void push(E car){    //Kollar så det finns plats och tillåten typ
         if (storage.size() < Capacity && allowedTypes.contains(car.getClass())){
             storage.push(car);
-        } else {
+        } else {    //kan oxå göra ett throw error...
             System.out.println("Wrong type of Car");
         }
     }
 
 
+    public E pop() {
 
+            return storage.pop();
+           //lämpar ut bil.
+    }
 }
 

@@ -141,6 +141,24 @@ public class CarView extends JFrame{
         });
 
 
+        liftBedButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                    ((Scania)carC.cars.get(2)).raiseTruckBed();
+                System.out.println(((Scania) carC.cars.get(2)).getAngle());
+            }
+        });
+
+
+        lowerBedButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ((Scania)carC.cars.get(2)).lowerTruckBed();
+                System.out.println(((Scania) carC.cars.get(2)).getAngle());
+            }
+        });
+
+
         // Make the frame pack all it's components by respecting the sizes if possible.
         this.pack();
 

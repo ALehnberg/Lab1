@@ -9,17 +9,19 @@ public class Scania extends Car implements Movable {
 
     public Scania() {
         super(2, 200, Color.green, "Lastbil");
+        angle = 0;
+
     }
 
     public void raiseTruckBed() {
-        if ((angle < 70)&& (getCurrentSpeed()==0)) {
-            angle += 1;
+        if ((angle > 0)&& (getCurrentSpeed()==0)) {
+            angle -= 1;
         } // Throw error / print
     }
 
     public void lowerTruckBed() {
-        if ((angle > 0) && (getCurrentSpeed()==0)) {
-            angle -= 1;
+        if ((angle < 70) && (getCurrentSpeed()==0)) {
+            angle += 1;
         } // Throw error
     }
 
@@ -35,6 +37,6 @@ public class Scania extends Car implements Movable {
 
     @Override
     public double speedFactor() {
-        return getEnginePower() * 0.01 ;
+        return getEnginePower() * 0.005 ;
     }   // inet speciellt som påverkar speedfactor.
 }

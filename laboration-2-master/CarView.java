@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
  * TODO: Write more actionListeners and wire the rest of the buttons
  **/
 
+
 public class CarView extends JFrame{
     private static final int X = 800;
     private static final int Y = 800;
@@ -115,7 +116,29 @@ public class CarView extends JFrame{
             }
         });
 
+        turboOnButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ((Saab95)carC.cars.get(1)).setTurboOn();
+            }
+        });
 
+        turboOffButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ((Saab95)carC.cars.get(1)).setTurboOff();
+            }
+        });
+
+
+        stopButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for(Car car : carC.cars){
+                    car.stopEngine();
+                }
+            }
+        });
 
 
         // Make the frame pack all it's components by respecting the sizes if possible.

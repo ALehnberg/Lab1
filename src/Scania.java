@@ -1,7 +1,7 @@
 import java.awt.*;
 import java.util.Stack;
-
-
+////////
+//
 public class Scania extends Car implements Movable {
 
     private double angle;

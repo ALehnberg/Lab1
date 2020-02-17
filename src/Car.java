@@ -197,7 +197,7 @@ public abstract class Car implements Movable {
             incrementSpeed(1);
         }
     }
-
+//
     /**
      * Metod som som kallar decrementSpeed(amount) om amount ligger i [0 1]
      *
@@ -212,6 +212,10 @@ public abstract class Car implements Movable {
         }
     }
 
+
+    public String getName(){
+        return modelName;
+    }
 
 
 

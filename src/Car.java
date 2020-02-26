@@ -43,6 +43,10 @@ public abstract class Car implements Movable {
         y += currentSpeed * StrictMath.sin(currentDir);
     }
 
+    public void setCurrentSpeed(double currentSpeed) {
+        this.currentSpeed = currentSpeed;
+    }
+
     /**
      * Metod turnLeft som ändrar current dir med -90*
      */

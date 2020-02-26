@@ -15,7 +15,6 @@ public class CarController {
 
 
 
-    //incendium
 
 
     // The delay (ms) corresponds to 20 updates a sec (hz)
@@ -34,7 +33,6 @@ public class CarController {
     public static void main(String[] args) {
         // Instance of this class
         CarController cc = new CarController();
-
 
         cc.cars.add(new Volvo240());
         cc.cars.add(new Saab95());
@@ -68,7 +66,7 @@ public class CarController {
         }
     }
 ////////
-    private void checkOutOfBounds(Car car){
+    private void checkOutOfBounds(Car car){     //usage dependency
         if (car.getX() > 680 || car.getX() < -1 || car.getY() > 801 || car.getY() < -1){
                 car.setCurrentDir(car.getCurrentDir() + Math.PI);
             System.out.println("BIL SVÄNGDE-----------------------------------------------------------------");

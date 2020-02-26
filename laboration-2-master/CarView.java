@@ -62,7 +62,7 @@ public class CarView extends JFrame{
                 new SpinnerNumberModel(0, //initial value
                         0, //min
                         100, //max
-                        1);//step
+                        5);//step
         gasSpinner = new JSpinner(spinnerModel);
         gasSpinner.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
@@ -154,6 +154,7 @@ public class CarView extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 ((Scania)carC.cars.get(2)).lowerTruckBed();
+                System.out.println(carC.cars.get(2).getCurrentSpeed());
                 System.out.println(((Scania) carC.cars.get(2)).getAngle());
             }
         });

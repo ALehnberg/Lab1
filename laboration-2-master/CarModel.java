@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * modifying the model state and the updating the view.
  */
 
-public class CarController {
+public class CarModel{
     // member fields:
 
 
@@ -21,13 +21,20 @@ public class CarController {
     public Timer timer = new Timer(delay, new TimerListener());
 
     // The frame that represents this instance View of the MVC pattern
+    //TODO: frame SKA BORT vv
     CarView frame;
     // A list of cars, modify if needed
-    ArrayList<Car> cars = new ArrayList<>();
+    ArrayList<Car> cars; // = new ArrayList<>();
+
+    public CarModel(ArrayList<Car> cars) {
+        this.cars = cars;
+    }
 
     /* Each step the TimerListener moves all the cars in the list and tells the
      * view to update its images. Change this method to your needs.
      * */
+
+    //Får en input från CONTROLLER som här hanteras ocg ger reaktion. (Logik).
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
 
@@ -43,6 +50,8 @@ public class CarController {
         }
     }
 ////////
+
+    //LOGIK. Varje tick kollar iv så biln inte kör utanför
     private void checkOutOfBounds(Car car){     //usage dependency
         if (car.getX() > 680 || car.getX() < -1 || car.getY() > 801 || car.getY() < -1){
                 car.setCurrentDir(car.getCurrentDir() + Math.PI);

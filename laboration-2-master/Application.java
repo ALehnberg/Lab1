@@ -5,9 +5,8 @@ public class Application {
     public static void main(String[] args) {
         // Instance of this class
 
-        CarController cc = new CarController();
+       CarModel cc = new CarModel(Factory.create3Cars());
 
-        cc.cars=Factory.create3Cars();
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);

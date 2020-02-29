@@ -2,7 +2,7 @@ import java.awt.*;
 import java.util.Stack;
 ////////
 //
-public class Scania extends Car implements Movable {
+public class Scania extends Car implements HasBed {
 
     private double angle;
     //Stack<Car> nCars;

@@ -119,14 +119,14 @@ public class CarView extends JFrame{
         turboOnButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ((Saab95)carC.cars.get(1)).setTurboOn();
+                ((HasTurbo)carC.cars.get(1)).setTurboOn();
             }
         });
 
         turboOffButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ((Saab95)carC.cars.get(1)).setTurboOff();
+                ((HasTurbo)carC.cars.get(1)).setTurboOff();
             }
         });
 
@@ -145,7 +145,7 @@ public class CarView extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                     ((Scania)carC.cars.get(2)).raiseTruckBed();
-                System.out.println(((Scania) carC.cars.get(2)).getAngle());
+                System.out.println(((HasBed) carC.cars.get(2)).getAngle());
             }
         });
 
@@ -153,9 +153,8 @@ public class CarView extends JFrame{
         lowerBedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ((Scania)carC.cars.get(2)).lowerTruckBed();
-                System.out.println(carC.cars.get(2).getCurrentSpeed());
-                System.out.println(((Scania) carC.cars.get(2)).getAngle());
+                ((HasBed)carC.cars.get(2)).lowerTruckBed();
+                System.out.println(((HasBed) carC.cars.get(2)).getAngle());
             }
         });
 

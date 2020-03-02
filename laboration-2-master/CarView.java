@@ -19,7 +19,7 @@ public class CarView extends JFrame{
     private static final int Y = 800;
 
     // The controller member
-    CarController carC;
+    CarModel carC;
 
     DrawPanel drawPanel = new DrawPanel(X, Y-240);
 
@@ -41,7 +41,7 @@ public class CarView extends JFrame{
     JButton stopButton = new JButton("Stop all cars");
 
     // Constructor
-    public CarView(String framename, CarController cc){
+    public CarView(String framename, CarModel cc){
         this.carC = cc;
         initComponents(framename);
     }
@@ -62,7 +62,7 @@ public class CarView extends JFrame{
                 new SpinnerNumberModel(0, //initial value
                         0, //min
                         100, //max
-                        1);//step
+                        5);//step
         gasSpinner = new JSpinner(spinnerModel);
         gasSpinner.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
@@ -119,14 +119,14 @@ public class CarView extends JFrame{
         turboOnButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ((Saab95)carC.cars.get(1)).setTurboOn();
+                ((HasTurbo)carC.cars.get(1)).setTurboOn();
             }
         });
 
         turboOffButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ((Saab95)carC.cars.get(1)).setTurboOff();
+                ((HasTurbo)carC.cars.get(1)).setTurboOff();
             }
         });
 
@@ -145,7 +145,7 @@ public class CarView extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                     ((Scania)carC.cars.get(2)).raiseTruckBed();
-                System.out.println(((Scania) carC.cars.get(2)).getAngle());
+                System.out.println(((HasBed) carC.cars.get(2)).getAngle());
             }
         });
 
@@ -153,8 +153,8 @@ public class CarView extends JFrame{
         lowerBedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ((Scania)carC.cars.get(2)).lowerTruckBed();
-                System.out.println(((Scania) carC.cars.get(2)).getAngle());
+                ((HasBed)carC.cars.get(2)).lowerTruckBed();
+                System.out.println(((HasBed) carC.cars.get(2)).getAngle());
             }
         });
 

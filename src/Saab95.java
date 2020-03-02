@@ -3,7 +3,7 @@ import java.awt.*;
 /**
  *
  */
-public class Saab95 extends Car {
+public class Saab95 extends Car implements HasTurbo {
 
     public boolean turboOn;
 
@@ -21,6 +21,7 @@ public class Saab95 extends Car {
     /**
      * Turbo på
      */
+    @Override
     public void setTurboOn() {
         turboOn = true;
     }
@@ -28,6 +29,7 @@ public class Saab95 extends Car {
     /**
      *tURBO AV
      */
+    @Override
     public void setTurboOff() {
         turboOn = false;
     }

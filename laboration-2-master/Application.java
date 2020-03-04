@@ -17,8 +17,6 @@ public class Application {
         // Start a new view with a reference of model
         CarView cv = new CarView("CarSim 1.0", cm);
 
-//        cm.addObserver(cv);
-
 
         // Start the timer (Ska ligga i model)???
         cm.timer.start();

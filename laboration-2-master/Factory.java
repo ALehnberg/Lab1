@@ -1,6 +1,7 @@
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Factory {
 
@@ -24,35 +25,38 @@ public class Factory {
 
     static void replaceCars(ArrayList<Car> cars) {
         int i = 0;
-        if (c < 10) {
             for (Car car : cars) {
                 car.setY(0 + i * 600 / cars.size());
                 i++;
-            }
         }
     }
 
-    static void addVolvo(ArrayList<Car> cars) {
+
+    static void addCar(ArrayList<Car> cars){
+        Random random = new Random();
+        int r = random.nextInt(2);
         if (c < 7) {
-            cars.add(new Volvo240());
+            if(r==0) {
+                cars.add(new Volvo240());
+            } else if(r==1){
+                cars.add(new Saab95());
+            } else  {
+                cars.add(new Scania());
+            }
             c++;
             System.out.println(cars.size() + " bilar");
         }
     }
 
-    static void addSaab(ArrayList<Car> cars) {
-        if (c < 7) {
-            cars.add(new Saab95());
-            c++;
+    static void removeCar (ArrayList<Car> cars){
+        if(c>0) {
+            Random random = new Random();
+            int r = random.nextInt(cars.size());
+            cars.remove(r);
+            c--;
         }
     }
 
-    static void addScania(ArrayList<Car> cars) {
-        if (c < 7) {
-            cars.add(new Scania());
-            c++;
-        }
-    }
 
 
 }

@@ -103,21 +103,15 @@ public class CarModel {
     }
 
 
-    void addVolvo(){
-        Factory.addVolvo(cars);
+    void addCar(){
+        Factory.addCar(cars);
         Factory.replaceCars(cars);
     }
 
-    void addSaab(){
-        Factory.addSaab(cars);
+    void removeCar(){
+        Factory.removeCar(cars);
         Factory.replaceCars(cars);
     }
-
-    void addScania(){
-        Factory.addScania(cars);
-        Factory.replaceCars(cars);
-    }
-
 
 }
 //

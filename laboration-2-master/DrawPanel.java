@@ -21,8 +21,8 @@ public class DrawPanel extends JPanel{
 
     // To keep track of a singel cars position
 
-    //List<Point> points = createPoints(model.cars);   // Kommer få nullpointer
-
+    List<Point> points;          //= createPoints(model.cars);   // Kommer få nullpointer
+/*
     Point volvoPoint = new Point();
     Point saabPoint = new Point();
     Point scaniaPoint = new Point();    //bilar ist?*/
@@ -33,16 +33,16 @@ public class DrawPanel extends JPanel{
         int i=0;
         for (Car cars : model.cars){
             if(i==0) {
-                volvoPoint.x = (int) Math.round(cars.getX());
-                volvoPoint.y = (int) Math.round(cars.getY());
+                points.get(0).x = (int) Math.round(cars.getX());          //volvoPoint.x = (int) Math.round(cars.getX());
+                points.get(0).y = (int) Math.round(cars.getY());       //volvoPoint.y = (int) Math.round(cars.getY());
                 i++;
             } else if (i==1) {
-                saabPoint.x = (int) Math.round(cars.getX());
-                saabPoint.y = (int) Math.round(cars.getY());
+                points.get(1).x = (int) Math.round(cars.getX());            //saabPoint.x = (int) Math.round(cars.getX());
+                points.get(1).y = (int) Math.round(cars.getY());            //saabPoint.y = (int) Math.round(cars.getY());
                 i++;
             } else {
-                scaniaPoint.x = (int) Math.round(cars.getX());
-                scaniaPoint.y = (int) Math.round(cars.getY());
+                points.get(2).x = (int) Math.round(cars.getX());                //scaniaPoint.x = (int) Math.round(cars.getX());
+                points.get(2).y = (int) Math.round(cars.getY());                //scaniaPoint.y = (int) Math.round(cars.getY());
             }
         }
         /*
@@ -66,6 +66,7 @@ public class DrawPanel extends JPanel{
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.green);
+        this.points = createPoints(model.cars);
         // Print an error message in case file is not found with a try/catch block
         try {
             // You can remove the "pics" part if running outside of IntelliJ and
@@ -89,9 +90,9 @@ public class DrawPanel extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(volvoImage, volvoPoint.x, volvoPoint.y, null); // see javadoc for more info on the parameters
-        g.drawImage(saabImage, saabPoint.x, saabPoint.y, null);
-        g.drawImage(scaniaImage, scaniaPoint.x, scaniaPoint.y, null);
+        g.drawImage(volvoImage, points.get(0).x, points.get(0).y, null); // see javadoc for more info on the parameters
+        g.drawImage(saabImage, points.get(1).x, points.get(1).y, null);
+        g.drawImage(scaniaImage, points.get(2).x, points.get(2).y, null);
     }
 
     List<Point> createPoints(ArrayList<Car> cars){
@@ -100,6 +101,10 @@ public class DrawPanel extends JPanel{
             points.add(new Point());
         }
         return points;
+    }
+
+    void updatePoints(List<Point> points){
+        points.add(new Point());
     }
 
 

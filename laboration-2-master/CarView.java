@@ -88,9 +88,8 @@ public class CarView extends JFrame implements Observer{
         controlPanel.add(controller.turboOffButton, 3);
         controlPanel.add(controller.liftBedButton, 4);
         controlPanel.add(controller.lowerBedButton, 5);
-        controlPanel.add(controller.addVolvo,6);
-        controlPanel.add(controller.addSaab,7);
-        controlPanel.add(controller.addScania,8);
+        controlPanel.add(controller.addCar,6);
+        controlPanel.add(controller.removeCar,7);
         controlPanel.setPreferredSize(new Dimension((X/2)+4+80, 200));
         this.add(controlPanel);
         controlPanel.setBackground(Color.CYAN);

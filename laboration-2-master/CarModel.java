@@ -82,7 +82,6 @@ public class CarModel {
     private void checkOutOfBounds(Car car) {     //usage dependency
         if (car.getX() > 680 || car.getX() < -1 || car.getY() > 801 || car.getY() < -1) {
             car.setCurrentDir(car.getCurrentDir() + Math.PI);
-            System.out.println("BIL SVÄNGDE-----------------------------------------------------------------");
         }
     }               // Om utanför banan, byt riktning
 
@@ -91,8 +90,6 @@ public class CarModel {
         double gas = ((double) amount) / 100;
         for (Car car : cars) {
             car.gas(gas);
-            System.out.println(car.getName() + " gas"); //Bilarna anropas men: ökas farten? svar nej. Varför?
-            System.out.println(car.getCurrentSpeed());
         }
 
     }

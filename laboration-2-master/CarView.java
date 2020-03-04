@@ -83,28 +83,28 @@ public class CarView extends JFrame implements Observer{
         controlPanel.setLayout(new GridLayout(2,4));
 
         controlPanel.add(controller.gasButton, 0);
-        controlPanel.add(controller.turboOnButton, 1);
-        controlPanel.add(controller.liftBedButton, 2);
-        controlPanel.add(controller.brakeButton, 3);
-        controlPanel.add(controller.turboOffButton, 4);
+        controlPanel.add(controller.brakeButton, 1);
+        controlPanel.add(controller.turboOnButton, 2);
+        controlPanel.add(controller.turboOffButton, 3);
+        controlPanel.add(controller.liftBedButton, 4);
         controlPanel.add(controller.lowerBedButton, 5);
         controlPanel.add(controller.addVolvo,6);
         controlPanel.add(controller.addSaab,7);
         controlPanel.add(controller.addScania,8);
-        controlPanel.setPreferredSize(new Dimension((X/2)+4, 200));
+        controlPanel.setPreferredSize(new Dimension((X/2)+4+80, 200));
         this.add(controlPanel);
         controlPanel.setBackground(Color.CYAN);
 
 
         controller.startButton.setBackground(Color.blue);
         controller.startButton.setForeground(Color.green);
-        controller.startButton.setPreferredSize(new Dimension(X/5-15,200));
+        controller.startButton.setPreferredSize(new Dimension(X/5-50,200));
         this.add(controller.startButton);
 
 
         controller.stopButton.setBackground(Color.red);
         controller.stopButton.setForeground(Color.black);
-        controller.stopButton.setPreferredSize(new Dimension(X/5-15,200));
+        controller.stopButton.setPreferredSize(new Dimension(X/5-50,200));
         this.add(controller.stopButton);
 
 

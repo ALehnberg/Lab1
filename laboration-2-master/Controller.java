@@ -18,15 +18,15 @@ public Controller(CarModel cm){
 
     JButton gasButton = new JButton("Gas");
     JButton brakeButton = new JButton("Brake");
-    JButton turboOnButton = new JButton("Saab Turbo on");
-    JButton turboOffButton = new JButton("Saab Turbo off");
-    JButton liftBedButton = new JButton("Scania Lift Bed");
-    JButton lowerBedButton = new JButton("Lower Lift Bed");
-    JButton startButton = new JButton("Start all cars");
-    JButton stopButton = new JButton("Stop all cars");
-    JButton addVolvo = new JButton("Add Volvo");
-    JButton addSaab = new JButton("Add Saab");
-    JButton addScania = new JButton("Add Scania");
+    JButton turboOnButton = new JButton("Turbo on");
+    JButton turboOffButton = new JButton("Turbo off");
+    JButton liftBedButton = new JButton("Lift Bed");
+    JButton lowerBedButton = new JButton("Lower Bed");
+    JButton startButton = new JButton("Start");
+    JButton stopButton = new JButton("Stop");
+    JButton addVolvo = new JButton("Volvo");
+    JButton addSaab = new JButton("Saab");
+    JButton addScania = new JButton("Scania");
 
     public void control() {
 
@@ -64,7 +64,6 @@ public Controller(CarModel cm){
         gasSpinner.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
                 gasAmount = (int) ((JSpinner)e.getSource()).getValue();
-                System.out.println(gasAmount);
             }
         });
 
@@ -85,14 +84,23 @@ public Controller(CarModel cm){
         turboOnButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ((HasTurbo) cm.cars.get(1)).setTurboOn();
+                for (Car car : cm.cars) {
+                    if(car.getName().equals("Saab95")) {
+                        ((HasTurbo) car).setTurboOn();
+                        System.out.println("turbo on");
+                    }
+                }
             }
         });
 
         turboOffButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ((HasTurbo) cm.cars.get(1)).setTurboOff();
+                for (Car car : cm.cars) {
+                    if(car.getName().equals("Saab95")) {
+                        ((HasTurbo) car).setTurboOff();
+                    }
+                }
             }
         });
 
@@ -110,7 +118,11 @@ public Controller(CarModel cm){
         liftBedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ((Scania) cm.cars.get(2)).raiseTruckBed();
+                for (Car car : cm.cars) {
+                    if(car.getName().equals("Lastbil")) {
+                        ((HasBed) car).raiseTruckBed();
+                    }
+                }
                 System.out.println(((HasBed) cm.cars.get(2)).getAngle());
             }
         });
@@ -119,7 +131,11 @@ public Controller(CarModel cm){
         lowerBedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ((HasBed) cm.cars.get(2)).lowerTruckBed();
+                for (Car car : cm.cars) {
+                    if(car.getName().equals("Lastbil")) {
+                        ((HasBed) car).lowerTruckBed();
+                    }
+                }
                 System.out.println(((HasBed) cm.cars.get(2)).getAngle());
             }
         });

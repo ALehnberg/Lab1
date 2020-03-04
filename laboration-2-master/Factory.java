@@ -33,21 +33,22 @@ public class Factory {
     }
 
     static void addVolvo(ArrayList<Car> cars) {
-        if (c < 10) {
+        if (c < 7) {
             cars.add(new Volvo240());
             c++;
+            System.out.println(cars.size() + " bilar");
         }
     }
 
     static void addSaab(ArrayList<Car> cars) {
-        if (c < 10) {
+        if (c < 7) {
             cars.add(new Saab95());
             c++;
         }
     }
 
     static void addScania(ArrayList<Car> cars) {
-        if (c < 10) {
+        if (c < 7) {
             cars.add(new Scania());
             c++;
         }

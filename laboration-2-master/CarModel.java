@@ -22,13 +22,35 @@ public class CarModel{
 
     // The frame that represents this instance View of the MVC pattern
     //TODO: frame SKA BORT vv
-    CarView frame;
+
     // A list of cars, modify if needed
     ArrayList<Car> cars; // = new ArrayList<>();
 
     public CarModel(ArrayList<Car> cars) {
         this.cars = cars;
+        fitY();
     }
+
+
+
+    public void addRandomCar() {
+       Factory.addCar(cars);
+            fitY();
+        }
+
+
+    public void removeLastCar() {   //tar bort sista bilen
+        Factory.removeCar(cars);
+    }
+
+
+    private void fitY() {
+        int len = cars.size();
+        for (int i = 0; i<len; i++) {
+            cars.get(i).setY(i * 600/len);
+        }
+    }
+
 
     /* Each step the TimerListener moves all the cars in the list and tells the
      * view to update its images. Change this method to your needs.
@@ -43,13 +65,31 @@ public class CarModel{
                 car.move();
                 int x = (int) Math.round(car.getX());
                 int y = (int) Math.round(car.getY());
-                frame.drawPanel.moveit(car);
+
+
+                notifyListeners();
+
+
+               //.drawPanel.moveit(car);
                 // repaint() calls the paintComponent method of the panel
-                frame.drawPanel.repaint();
+               // frame.drawPanel.repaint();
             }
         }
     }
 ////////
+private void notifyListeners(){
+    for (AnimateListener l : listeners)
+        l.actOnUpdate();
+}
+
+    private java.util.List<AnimateListener> listeners = new ArrayList<>();
+    public void addListener(AnimateListener l){
+        listeners.add(l);
+    }
+
+
+
+
 
     //LOGIK. Varje tick kollar iv så biln inte kör utanför
     private void checkOutOfBounds(Car car){     //usage dependency

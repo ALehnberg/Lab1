@@ -1,0 +1,14 @@
+*.class
+*.iml
+*.idea
+out/production/Lab1/Garage.class
+out/production/Lab1/Garage.class
+out/test/Lab1/test.class
+out/production/Lab1/Scania.class
+out/production/Lab1/CarTransport.class
+
+*.class
+*.class
+
+out/production/Lab1/laboration-2/pics/Volvo240.jpg
+

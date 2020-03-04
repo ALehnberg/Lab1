@@ -1,7 +1,11 @@
+import sun.misc.Signal;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
@@ -9,35 +13,56 @@ import javax.swing.*;
 
 public class DrawPanel extends JPanel{
 
+    CarModel model;
     // Just a single image, TODO: Generalize
     BufferedImage volvoImage;
     BufferedImage saabImage;
     BufferedImage scaniaImage;
 
     // To keep track of a singel cars position
+
+    //List<Point> points = createPoints(model.cars);   // Kommer få nullpointer
+
     Point volvoPoint = new Point();
     Point saabPoint = new Point();
-    Point scaniaPoint = new Point();
+    Point scaniaPoint = new Point();    //bilar ist?*/
 
 
     // TODO: Make this genereal for all cars
-    void moveit(Car car){//, Point carPoint){
-
+    void moveit(){
+        int i=0;
+        for (Car cars : model.cars){
+            if(i==0) {
+                volvoPoint.x = (int) Math.round(cars.getX());
+                volvoPoint.y = (int) Math.round(cars.getY());
+                i++;
+            } else if (i==1) {
+                saabPoint.x = (int) Math.round(cars.getX());
+                saabPoint.y = (int) Math.round(cars.getY());
+                i++;
+            } else {
+                scaniaPoint.x = (int) Math.round(cars.getX());
+                scaniaPoint.y = (int) Math.round(cars.getY());
+            }
+        }
+        /*
         if(car.getName().equals("Volvo240")){
             volvoPoint.x = (int) Math.round(car.getX());
             volvoPoint.y = (int) Math.round(car.getY());
         } else if(car.getName().equals("Saab95")){
-            saabPoint.x = (int) Math.round(car.getX());
-            saabPoint.y = (int) Math.round(car.getY());
+            saabPoint.x = (int) Math.round(cars.getX());
+            saabPoint.y = (int) Math.round(cars.getY());
         } else {
-            scaniaPoint.x = (int) Math.round(car.getX());
-            scaniaPoint.y = (int) Math.round(car.getY());
+            scaniaPoint.x = (int) Math.round(cars.getX());
+            scaniaPoint.y = (int) Math.round(cars.getY());
         }
+         */
     }
 
 
     // Initializes the panel and reads the images
-    public DrawPanel(int x, int y) {
+    public DrawPanel(int x, int y, CarModel cm) {
+        this.model=cm;
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.green);
@@ -68,4 +93,14 @@ public class DrawPanel extends JPanel{
         g.drawImage(saabImage, saabPoint.x, saabPoint.y, null);
         g.drawImage(scaniaImage, scaniaPoint.x, scaniaPoint.y, null);
     }
+
+    List<Point> createPoints(ArrayList<Car> cars){
+        List<Point> points = new ArrayList<>();
+        for (Car car : cars){
+            points.add(new Point());
+        }
+        return points;
+    }
+
+
 }

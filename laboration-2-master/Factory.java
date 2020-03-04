@@ -4,6 +4,7 @@ import java.util.List;
 
 public class Factory {
 
+    static int c = 0;
 
     public static ArrayList<Car> create3Cars() {
 
@@ -21,8 +22,36 @@ public class Factory {
         return cars;
     }
 
+    static void replaceCars(ArrayList<Car> cars) {
+        int i = 0;
+        if (c < 10) {
+            for (Car car : cars) {
+                car.setY(0 + i * 600 / cars.size());
+                i++;
+            }
+        }
+    }
 
+    static void addVolvo(ArrayList<Car> cars) {
+        if (c < 10) {
+            cars.add(new Volvo240());
+            c++;
+        }
+    }
 
+    static void addSaab(ArrayList<Car> cars) {
+        if (c < 10) {
+            cars.add(new Saab95());
+            c++;
+        }
+    }
+
+    static void addScania(ArrayList<Car> cars) {
+        if (c < 10) {
+            cars.add(new Scania());
+            c++;
+        }
+    }
 
 
 }

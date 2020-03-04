@@ -1,17 +1,37 @@
+import sun.misc.Signal;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
+import java.util.List;
 /*
- * This class represents the Controller part in the MVC pattern.
+ * This class represents the Controller part in the MVC pattern. Not any more punk
  * It's responsibilities is to listen to the View and responds in a appropriate manner by
- * modifying the model state and the updating the view.
+ * modifying the model state and updating the view.
  */
 
-public class CarModel{
+public class CarModel {
     // member fields:
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+    //Observer pattern
+
+
+    private List<Observer> observers = new ArrayList<>();   //En lista med observers
+
+    public void addObserver(Observer obs) {                  // Lägg till observer, sker i konstruktorn
+        observers.add(obs);
+    }
+
+    private void notifyObs() {       //
+        for (Observer obs : observers) {                       // observers size 3??
+            obs.notifyFUCK();                                   // obs = null?
+        }
+    }
+
+//////////////////////////////////////////////////////////////////////////////////////////////
 
 
     // The delay (ms) corresponds to 20 updates a sec (hz)
@@ -22,12 +42,13 @@ public class CarModel{
 
     // The frame that represents this instance View of the MVC pattern
     //TODO: frame SKA BORT vv
-    CarView frame;
+    //CarView frame;
     // A list of cars, modify if needed
     ArrayList<Car> cars; // = new ArrayList<>();
 
     public CarModel(ArrayList<Car> cars) {
         this.cars = cars;
+        //this.observers.add(this.obs);               //Lägg till Observer till vår lista
     }
 
     /* Each step the TimerListener moves all the cars in the list and tells the
@@ -39,22 +60,28 @@ public class CarModel{
         public void actionPerformed(ActionEvent e) {
 
             for (Car car : cars) {
+
                 checkOutOfBounds(car);
                 car.move();
                 int x = (int) Math.round(car.getX());
                 int y = (int) Math.round(car.getY());
-                frame.drawPanel.moveit(car);
-                // repaint() calls the paintComponent method of the panel
-                frame.drawPanel.repaint();
+
+                                                               /*
+                                                             frame.drawPanel.moveit(car);                    // notifyObs() här!!!!
+                                                                 // repaint() calls the paintComponent method of the panel
+                                                                     frame.drawPanel.repaint();
+                                                                     */
             }
+            notifyObs();
+            //System.out.println(cars.get(1).getCurrentSpeed()); Returnerar alltid 0, trots respons från gas button
         }
     }
 ////////
 
     //LOGIK. Varje tick kollar iv så biln inte kör utanför
-    private void checkOutOfBounds(Car car){     //usage dependency
-        if (car.getX() > 680 || car.getX() < -1 || car.getY() > 801 || car.getY() < -1){
-                car.setCurrentDir(car.getCurrentDir() + Math.PI);
+    private void checkOutOfBounds(Car car) {     //usage dependency
+        if (car.getX() > 680 || car.getX() < -1 || car.getY() > 801 || car.getY() < -1) {
+            car.setCurrentDir(car.getCurrentDir() + Math.PI);
             System.out.println("BIL SVÄNGDE-----------------------------------------------------------------");
         }
     }               // Om utanför banan, byt riktning
@@ -64,7 +91,10 @@ public class CarModel{
         double gas = ((double) amount) / 100;
         for (Car car : cars) {
             car.gas(gas);
+            System.out.println(car.getName() + " gas"); //Bilarna anropas men: ökas farten? svar nej. Varför?
+            System.out.println(car.getCurrentSpeed());
         }
+
     }
 
     void brake(int amount) {
@@ -74,6 +104,23 @@ public class CarModel{
             car.brake(brake);
         }
     }
+
+
+    void addVolvo(){
+        Factory.addVolvo(cars);
+        Factory.replaceCars(cars);
+    }
+
+    void addSaab(){
+        Factory.addSaab(cars);
+        Factory.replaceCars(cars);
+    }
+
+    void addScania(){
+        Factory.addScania(cars);
+        Factory.replaceCars(cars);
+    }
+
 
 }
 //

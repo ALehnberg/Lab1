@@ -4,7 +4,7 @@ import java.awt.*;
 /**
  * Abstrakt klass Car, extendas till Volvo och Saab
  */
-public abstract class Car implements Movable {
+public abstract class Car implements Movable, Coordinate {
 
     /**
      * Allt en bil är
@@ -200,6 +200,7 @@ public abstract class Car implements Movable {
         } else if(amount>1){
             incrementSpeed(1);
         }
+        //System.out.println("Signal recieved");
     }
 //
     /**

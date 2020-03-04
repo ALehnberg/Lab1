@@ -35,7 +35,7 @@ public class Factory {
                 cars.add(new Scania());
             }
 
-           // System.out.println(cars.size() + " bilar");
+            // System.out.println(cars.size() + " bilar");
         }
     }
 
@@ -47,9 +47,5 @@ public class Factory {
 
         }
     }
-
-
-
-
-
+    
 }

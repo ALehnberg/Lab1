@@ -5,12 +5,12 @@ public class Application {
     public static void main(String[] args) {
         // Instance of this class
         ArrayList<Car> list = Factory.create3Cars();
-       CarModel cc = new CarModel(list);
-       CarView cv = new CarView("CarSim 1.0", cc);
+        CarModel cc = new CarModel(list);
+        CarView cv = new CarView("CarSim 1.0", cc);
         cc.addListener(cv);
 
 
-       Controller c = new Controller(cc,cv);
+        Controller c = new Controller(cc,cv);
 
 
 

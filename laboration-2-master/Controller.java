@@ -130,7 +130,7 @@ public class Controller extends JFrame{
                         ((HasBed) car).raiseTruckBed();
                     }
                 }
-              //  System.out.println(((HasBed) cm.cars.get(2)).getAngle());
+                //  System.out.println(((HasBed) cm.cars.get(2)).getAngle());
             }
         });
 
@@ -143,7 +143,7 @@ public class Controller extends JFrame{
                         ((HasBed) car).lowerTruckBed();
                     }
                 }
-               // System.out.println(((HasBed) model.cars.get(2)).getAngle());
+                // System.out.println(((HasBed) model.cars.get(2)).getAngle());
             }
         });
 

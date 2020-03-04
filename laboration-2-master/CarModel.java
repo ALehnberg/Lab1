@@ -34,9 +34,9 @@ public class CarModel{
 
 
     public void addRandomCar() {
-       Factory.addCar(cars);
-            fitY();
-        }
+        Factory.addCar(cars);
+        fitY();
+    }
 
 
     public void removeLastCar() {   //tar bort sista bilen
@@ -70,17 +70,17 @@ public class CarModel{
                 notifyListeners();
 
 
-               //.drawPanel.moveit(car);
+                //.drawPanel.moveit(car);
                 // repaint() calls the paintComponent method of the panel
-               // frame.drawPanel.repaint();
+                // frame.drawPanel.repaint();
             }
         }
     }
-////////
-private void notifyListeners(){
-    for (AnimateListener l : listeners)
-        l.actOnUpdate();
-}
+    ////////
+    private void notifyListeners(){
+        for (AnimateListener l : listeners)
+            l.actOnUpdate();
+    }
 
     private java.util.List<AnimateListener> listeners = new ArrayList<>();
     public void addListener(AnimateListener l){
@@ -94,7 +94,7 @@ private void notifyListeners(){
     //LOGIK. Varje tick kollar iv så biln inte kör utanför
     private void checkOutOfBounds(Car car){     //usage dependency
         if (car.getX() > 680 || car.getX() < -1 || car.getY() > 801 || car.getY() < -1){
-                car.setCurrentDir(car.getCurrentDir() + Math.PI);
+            car.setCurrentDir(car.getCurrentDir() + Math.PI);
             System.out.println("BIL SVÄNGDE-----------------------------------------------------------------");
         }
     }               // Om utanför banan, byt riktning

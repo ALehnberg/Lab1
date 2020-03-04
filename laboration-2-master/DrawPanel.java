@@ -28,16 +28,16 @@ public class DrawPanel extends JPanel implements AnimateListener{
     List<Point> plist = new ArrayList<>();
 
 
-   public void createPoints() {
-       for (Car c : carM.cars)
-           plist.add(new Point());
-   }
+    public void createPoints() {
+        for (Car c : carM.cars)
+            plist.add(new Point());
+    }
 
-   public void addPoint() {
-       if (plist.size() < 10) {
-           plist.add(new Point());
-       }
-   }
+    public void addPoint() {
+        if (plist.size() < 10) {
+            plist.add(new Point());
+        }
+    }
 
     public void removePoint() { //tar bort sista
         if (plist.size() > 0) {
@@ -79,7 +79,7 @@ public class DrawPanel extends JPanel implements AnimateListener{
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.green);
         this.carM = cm;
-       createPoints();
+        createPoints();
         // Print an error message in case file is not found with a try/catch block
         try {
             // You can remove the "pics" part if running outside of IntelliJ and
@@ -106,7 +106,7 @@ public class DrawPanel extends JPanel implements AnimateListener{
        /* g.drawImage(volvoImage, volvoPoint.x, volvoPoint.y, null); // see javadoc for more info on the parameters
         g.drawImage(saabImage, saabPoint.x, saabPoint.y, null);
         g.drawImage(scaniaImage, scaniaPoint.x, scaniaPoint.y, null);*/
-       drawImg(g);
+        drawImg(g);
     }
 
     private void drawImg(Graphics g) {

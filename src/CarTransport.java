@@ -54,7 +54,6 @@ public class CarTransport extends Car implements Movable {
         }
     }
 
-
     public boolean isLoadable(Car car){
         return (Math.abs(car.getX() - this.getX()) < pickRange && Math.abs(car.getY() - this.getY()) < pickRange && !rampUpp && CarStack.size() < cap);
 

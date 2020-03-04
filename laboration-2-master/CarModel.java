@@ -32,12 +32,10 @@ public class CarModel{
     }
 
 
-
     public void addRandomCar() {
         Factory.addCar(cars);
         fitY();
     }
-
 
     public void removeLastCar() {   //tar bort sista bilen
         Factory.removeCar(cars);
@@ -50,7 +48,6 @@ public class CarModel{
             cars.get(i).setY(i * 600/len);
         }
     }
-
 
     /* Each step the TimerListener moves all the cars in the list and tells the
      * view to update its images. Change this method to your needs.
@@ -66,13 +63,7 @@ public class CarModel{
                 int x = (int) Math.round(car.getX());
                 int y = (int) Math.round(car.getY());
 
-
                 notifyListeners();
-
-
-                //.drawPanel.moveit(car);
-                // repaint() calls the paintComponent method of the panel
-                // frame.drawPanel.repaint();
             }
         }
     }
@@ -86,8 +77,6 @@ public class CarModel{
     public void addListener(AnimateListener l){
         listeners.add(l);
     }
-
-
 
 
 
@@ -115,5 +104,50 @@ public class CarModel{
         }
     }
 
-}
+    void stopCars() {
+        for (Car car : cars) {
+            car.stopEngine();
+        }
+    }
+
+    void turboOn() {
+        for (Car car : cars) {
+            if (car instanceof HasTurbo) {
+                ((HasTurbo) car).setTurboOn();
+                // System.out.println("turbo on");
+            }
+        }
+    }
+
+        void turboOff() {
+            for (Car car : cars) {
+                if (car instanceof HasTurbo) {
+                    ((HasTurbo) car).setTurboOff();
+                }
+            }
+        }
+       void lift() {
+           for (Car car : cars) {
+               if (car instanceof HasBed) {
+                   ((HasBed) car).raiseTruckBed();
+               }
+           }
+       }
+        void lower() {
+               for (Car car : cars) {
+                   if(car instanceof HasBed) {
+                       ((HasBed) car).lowerTruckBed();
+                   }
+               }
+           }
+
+    }
+
+
+
+
+
+
+
+
 //

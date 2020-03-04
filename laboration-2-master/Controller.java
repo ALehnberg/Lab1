@@ -21,8 +21,6 @@ public class Controller extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 model.removeLastCar();
                 view.drawPanel.removePoint();
-                System.out.println(model.cars.size());
-                System.out.println(view.drawPanel.plist.size());
             }
         });
 
@@ -30,7 +28,7 @@ public class Controller extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 model.addRandomCar();
-                view.drawPanel.addPoint();
+                view.drawPanel.addPoint(model.cars.get(model.cars.size()-1));
             }
         });
 
@@ -48,88 +46,41 @@ public class Controller extends JFrame{
             }
         });
 
-        /*view.turboOnButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ((HasTurbo) model.cars.get(1)).setTurboOn();
-            }
-        });
-
-        view.turboOffButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ((HasTurbo) model.cars.get(1)).setTurboOff();
-            }
-        });*/
 
         view.stopButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                for (Car car : model.cars) {
-                    car.stopEngine();
-                }
+                model.stopCars();
             }
         });
 
-
-       /* view.liftBedButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ((Scania) model.cars.get(2)).raiseTruckBed();
-                System.out.println(((HasBed) model.cars.get(2)).getAngle());
-            }
-        });
-
-
-        view.lowerBedButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ((HasBed) model.cars.get(2)).lowerTruckBed();
-                System.out.println(((HasBed) model.cars.get(2)).getAngle());
-            }
-        });*/
         view.turboOnButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                for (Car car : model.cars) {
-                    if(car instanceof HasTurbo) {
-                        ((HasTurbo) car).setTurboOn();
-                        System.out.println("turbo on");
-                    }
-                }
+               model.turboOn();
             }
         });
 
         view.turboOffButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                for (Car car : model.cars) {
-                    if(car instanceof HasTurbo) {
-                        ((HasTurbo) car).setTurboOff();
-                    }
-                }
+                model.turboOff();
             }
         });
 
-
-        view.stopButton.addActionListener(new ActionListener() {
+        /*view.stopButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 for (Car car : model.cars) {
                     car.stopEngine();
                 }
             }
-        });
-
+        });*/
 
         view.liftBedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                for (Car car : model.cars) {
-                    if(car instanceof HasBed) {
-                        ((HasBed) car).raiseTruckBed();
-                    }
-                }
+               model.lift();
                 //  System.out.println(((HasBed) cm.cars.get(2)).getAngle());
             }
         });
@@ -138,18 +89,10 @@ public class Controller extends JFrame{
         view.lowerBedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                for (Car car : model.cars) {
-                    if(car instanceof HasBed) {
-                        ((HasBed) car).lowerTruckBed();
-                    }
-                }
+                model.lower();
                 // System.out.println(((HasBed) model.cars.get(2)).getAngle());
             }
         });
-
-
-
-
 
     }
 

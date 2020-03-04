@@ -8,7 +8,7 @@ public class Scania extends Car implements HasBed {
     //Stack<Car> nCars;
 
     public Scania() {
-        super(2, 70, Color.green, "Lastbil");
+        super(2, 70, Color.green, "Scania");
         angle = 0;
 
     }

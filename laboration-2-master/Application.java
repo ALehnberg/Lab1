@@ -9,9 +9,7 @@ public class Application {
         CarView cv = new CarView("CarSim 1.0", cc);
         cc.addListener(cv);
 
-
         Controller c = new Controller(cc,cv);
-
 
 
         // Start a new view and send a reference of self
